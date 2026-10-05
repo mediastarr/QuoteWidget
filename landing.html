@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QuoteWidget — AI Instant Estimates for Contractors · Mediastarr</title>
+<meta name="description" content="An AI estimator for contractor websites. Visitors describe their project — or snap a photo — get an instant ballpark, book a site visit, and you get the lead by email. $49.99/month.">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+         color: #1f2937; background: #fff; line-height: 1.6; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; }
+  .logo { font-weight: 800; font-size: 20px; color: #1a2b4a; }
+  .logo span { color: #0d9488; }
+  .navlinks a { margin-left: 28px; text-decoration: none; color: #4b5563; font-size: 15px; }
+  .btn { display: inline-block; background: #0d9488; color: #fff; text-decoration: none;
+         padding: 13px 30px; border-radius: 12px; font-weight: 700; font-size: 16px; border: none; cursor: pointer; }
+  .btn:hover { background: #0f766e; }
+  .btn.ghost { background: #f0fdfa; color: #0d9488; }
+  .hero { text-align: center; padding: 70px 0 50px; }
+  .hero h1 { font-size: 46px; line-height: 1.15; color: #111827; letter-spacing: -1px; max-width: 760px; margin: 0 auto 18px; }
+  .hero h1 span { color: #0d9488; }
+  .hero p { font-size: 19px; color: #6b7280; max-width: 620px; margin: 0 auto 32px; }
+  .hero .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .badges { display: flex; gap: 26px; justify-content: center; margin-top: 44px; flex-wrap: wrap; }
+  .badge { display: flex; align-items: center; gap: 9px; font-size: 14.5px; color: #4b5563; font-weight: 600; }
+  .badge .dot { width: 10px; height: 10px; border-radius: 50%; background: #22c55e; }
+  .section { padding: 64px 0; }
+  .section h2 { text-align: center; font-size: 32px; color: #111827; margin-bottom: 12px; letter-spacing: -0.5px; }
+  .section .sub { text-align: center; color: #6b7280; font-size: 17px; margin-bottom: 44px; }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .step { background: #f8fafc; border-radius: 16px; padding: 30px 26px; text-align: center; }
+  .step .num { width: 44px; height: 44px; border-radius: 50%; background: #0d9488; color: #fff;
+               font-weight: 800; font-size: 19px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
+  .step h3 { font-size: 18px; margin-bottom: 8px; }
+  .step p { font-size: 14.5px; color: #6b7280; }
+  .features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .feat { display: flex; gap: 16px; background: #f8fafc; border-radius: 14px; padding: 24px; }
+  .feat .icon { font-size: 28px; flex: 0 0 auto; }
+  .feat h3 { font-size: 16.5px; margin-bottom: 6px; }
+  .feat p { font-size: 14.5px; color: #6b7280; }
+  .demo-box { background: #1a2b4a; border-radius: 20px; padding: 54px 40px; text-align: center; color: #fff; }
+  .demo-box h2 { color: #fff; }
+  .demo-box p { color: #c3cede; max-width: 560px; margin: 0 auto 26px; font-size: 17px; }
+  .demo-hint { display: inline-block; background: rgba(255,255,255,.12); border-radius: 10px;
+               padding: 10px 20px; font-size: 14px; color: #e5eaf3; }
+  .pricing { max-width: 440px; margin: 0 auto; background: #fff; border: 2px solid #0d9488;
+             border-radius: 20px; padding: 40px 36px; text-align: center;
+             box-shadow: 0 12px 40px rgba(13,148,136,.12); }
+  .pricing .price { font-size: 52px; font-weight: 800; color: #111827; }
+  .pricing .per { color: #6b7280; font-size: 16px; }
+  .pricing ul { list-style: none; text-align: left; margin: 26px 0; }
+  .pricing li { padding: 9px 0; font-size: 15px; border-bottom: 1px solid #f1f5f9; }
+  .pricing li:before { content: "✓ "; color: #22c55e; font-weight: 700; }
+  .faq { max-width: 720px; margin: 0 auto; }
+  .faq details { background: #f8fafc; border-radius: 12px; padding: 18px 22px; margin-bottom: 12px; }
+  .faq summary { font-weight: 700; cursor: pointer; font-size: 15.5px; }
+  .faq p { margin-top: 10px; font-size: 14.5px; color: #4b5563; }
+  .final { text-align: center; padding: 70px 0; background: #f8fafc; border-radius: 24px; margin-bottom: 40px; }
+  .final h2 { margin-bottom: 14px; }
+  footer { text-align: center; color: #9aa1ad; font-size: 13px; padding: 26px 0 40px; }
+  @media (max-width: 720px) {
+    .hero h1 { font-size: 33px; }
+    .steps, .features { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav>
+    <div class="logo">Quote<span>Widget</span></div>
+    <div class="navlinks">
+      <a href="#how">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <h1>Stop losing jobs to <span>"I'll call around"</span></h1>
+    <p>An AI estimator on <em>your</em> website. Visitors describe their project — or snap a photo of it — get an instant ballpark from your real prices, even book a site visit. You get their name and number by email, instantly.</p>
+    <div class="cta-row">
+      <a class="btn" href="#pricing">Get started — $49.99/mo</a>
+      <a class="btn ghost" href="#demo">Try the live demo</a>
+    </div>
+    <div class="badges">
+      <div class="badge"><span class="dot"></span> Live in 10 minutes</div>
+      <div class="badge"><span class="dot"></span> No app to install</div>
+      <div class="badge"><span class="dot"></span> Cancel anytime</div>
+    </div>
+  </div>
+
+  <div class="section" id="how">
+    <h2>How it works</h2>
+    <div class="sub">From signup to quoting jobs in three steps.</div>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><h3>Enter your prices</h3><p>Your services and price ranges — faucet repair $120–$250, drain unclog $150–$300, whatever's real. Takes 10 minutes.</p></div>
+      <div class="step"><div class="num">2</div><h3>Paste one line of code</h3><p>Add a single script tag to your website. Works with WordPress, Wix, Squarespace, or plain HTML.</p></div>
+      <div class="step"><div class="num">3</div><h3>It quotes, you close</h3><p>Visitors get instant ballparks day or night. Their contact details hit your inbox the second they ask for an exact quote.</p></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Why contractors love it</h2>
+    <div class="sub">It's like a salesperson who works weekends for less than $2 a day.</div>
+    <div class="features">
+      <div class="feat"><div class="icon">⚡</div><div><h3>Instant ballparks, 24/7</h3><p>A homeowner with a burst pipe at 11pm gets a price range now — not after calling three competitors Monday morning.</p></div></div>
+      <div class="feat"><div class="icon">🎯</div><div><h3>Quotes from YOUR prices</h3><p>It estimates only from the price ranges you enter. Never invents numbers, never lowballs you.</p></div></div>
+      <div class="feat"><div class="icon">📞</div><div><h3>Every quote becomes a lead</h3><p>After the ballpark, it asks for name and number for an exact quote — emailed to you instantly.</p></div></div>
+      <div class="feat"><div class="icon">📷</div><div><h3>Photo estimates</h3><p>Customers snap a photo of the problem. The AI looks at it to sharpen the ballpark — and the photo lands in your inbox attached to the lead.</p></div></div>
+      <div class="feat"><div class="icon">📅</div><div><h3>Site visit booking</h3><p>Visitors can pick a preferred date and time for a visit right in the widget. It shows up in your email and dashboard.</p></div></div>
+      <div class="feat"><div class="icon">📍</div><div><h3>Service area check</h3><p>Set the ZIP codes you serve. Visitors outside your area get a polite message — and you still capture their details.</p></div></div>
+      <div class="feat"><div class="icon">🛡️</div><div><h3>Honest by design</h3><p>If a job isn't in your price list, it says so instead of guessing — and still captures the lead.</p></div></div>
+      <div class="feat"><div class="icon">🎨</div><div><h3>Matches your brand</h3><p>Your business name and colors. Looks like part of your site.</p></div></div>
+      <div class="feat"><div class="icon">📊</div><div><h3>Owner dashboard</h3><p>Every quote request — job description, ballpark given, contact details — in one place.</p></div></div>
+    </div>
+  </div>
+
+  <div class="section" id="demo">
+    <div class="demo-box">
+      <h2>Try it right now</h2>
+      <p>This is a live estimator on a demo plumbing site. Click "Get an estimate" in the bottom-right, describe a job — try attaching a photo — and watch it quote. Then book a site visit to see the full flow.</p>
+      <span class="demo-hint">🧮 Look for the button, bottom-right →</span>
+    </div>
+  </div>
+
+  <div class="section" id="pricing">
+    <h2>Simple pricing</h2>
+    <div class="sub">One plan. Everything included.</div>
+    <div class="pricing">
+      <div class="price">$49.99<span class="per">/month</span></div>
+      <ul>
+        <li>AI estimator on your website</li>
+        <li>Trained on your real price ranges</li>
+        <li>Photo estimates — customers upload job photos</li>
+        <li>Site visit booking with date/time picker</li>
+        <li>Service area check by ZIP code</li>
+        <li>Lead capture with instant email alerts</li>
+        <li>Owner dashboard for all quote requests</li>
+        <li>Your branding &amp; colors</li>
+        <li>Unlimited estimates</li>
+        <li>Update your prices anytime</li>
+        <li>Cancel anytime</li>
+      </ul>
+      <a class="btn" href="https://mediastarr.lemonsqueezy.com/checkout/buy/40ff381d-81f7-484d-b15c-5b78ffb3fe2b">Get started</a>
+    </div>
+  </div>
+
+  <div class="section" id="faq">
+    <h2>Questions</h2>
+    <div class="sub"></div>
+    <div class="faq">
+      <details><summary>Will it quote the wrong price and cost me money?</summary><p>No. It estimates only from the price ranges you enter, always as a range (never a single number), and every estimate ends with "this is a rough ballpark, not a final quote." If a job isn't in your list, it says so and captures the lead anyway.</p></details>
+      <details><summary>How do quote requests reach me?</summary><p>Instantly by email — the moment a visitor asks for an exact quote, you get their name, number, job description, the ballpark they saw, their preferred visit date/time if they picked one, and any photo they uploaded (attached). Everything is also saved to your owner dashboard.</p></details>
+      <details><summary>Do I have to use the photo and booking features?</summary><p>No. They're on by default but visitors can skip the photo and the visit date — the core estimate-and-lead flow works the same either way. Service area check only kicks in if you enter ZIP codes.</p></details>
+      <details><summary>Does it work with my website builder?</summary><p>Yes — WordPress, Wix, Squarespace, or plain HTML. If you can paste a line of code (or have someone who can), it works.</p></details>
+      <details><summary>What happens when I cancel?</summary><p>The widget is removed and billing stops. No lock-in, no fees.</p></details>
+      <details><summary>Can I change my prices later?</summary><p>Anytime. Update your ranges and the estimator uses them immediately.</p></details>
+    </div>
+  </div>
+
+  <div class="final">
+    <h2>Stop losing weekend jobs</h2>
+    <p style="color:#6b7280;margin-bottom:26px">Join the contractors quoting 24/7.</p>
+    <a class="btn" href="https://mediastarr.lemonsqueezy.com/checkout/buy/40ff381d-81f7-484d-b15c-5b78ffb3fe2b">Get QuoteWidget — $49.99/mo</a>
+  </div>
+
+  <footer>QuoteWidget by Mediastarr · Questions? mediastarr86@gmail.com</footer>
+</div>
+
+<!-- Live demo: the Mike's Plumbing estimator, embedded on this page. -->
+<script>
+  const WORKER_URL = "https://quote-widget.mediastarr86.workers.dev/"; // <-- paste your Worker URL to activate the live demo
+  if (WORKER_URL) {
+    const s = document.createElement("script");
+    s.src = WORKER_URL.replace(/\/$/, "") + "/widget.js";
+    s.setAttribute("data-business", "mikes-plumbing");
+    document.body.appendChild(s);
+  }
+</script>
+</body>
+</html>
